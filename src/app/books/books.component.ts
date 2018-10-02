@@ -19,7 +19,7 @@ export class BooksComponent implements OnInit {
   columnsToDisplay = ['title', 'author', 'type', 'series', 'book_num', 'owner', 'isbn_13'];
   isLoading = true;
   pager: any;
-  pagedItems : any[];
+  pagedItems: any[];
   currentPage = 1;
   pageSize = 20;
   dataSource: any;
@@ -37,7 +37,7 @@ export class BooksComponent implements OnInit {
   }
 
   handlePageEvent(e: any): void {
-    this.currentPage = e.pageIndex+1;
+    this.currentPage = e.pageIndex + 1;
     this.pageSize = e.pageSize;
     this.pagedItems = [];
     this.dataSource = new MatTableDataSource(this.pagedItems);
@@ -56,12 +56,12 @@ export class BooksComponent implements OnInit {
   sortData(sort: Sort) {
       const data = this.books.slice();
       const orig = data.slice();
-      if(!sort.active || sort.direction == ''){
+      if(!sort.active || sort.direction === ''){
         this.setPage();
         return;
       }
 
-      this.books = data.sort((a,b) => {
+      this.books = data.sort((a, b) => {
           const isAsc = sort.direction === 'asc';
           switch (sort.active) {
             case 'title' : return this.compare(a.title, b.title, isAsc);

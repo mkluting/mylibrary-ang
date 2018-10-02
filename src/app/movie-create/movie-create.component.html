@@ -1,0 +1,29 @@
+<div>
+  <mat-form-field>
+    <input required matInput class="form-control" [formControl]="title" placeholder="Title" [(ngModel)]="newMovie.title" />
+  </mat-form-field>
+  <mat-form-field>
+    <input required matInput placeholder="Director" [(ngModel)]="newMovie.director"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select required placeholder="Type" [(ngModel)]="newMovie.type">
+      <mat-option value="DVD">DVD</mat-option>
+      <mat-option value="Blu-Ray">Blu-Ray</mat-option>
+      <mat-option value="Other">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Series" [(ngModel)]="newMovie.series"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Series Order Number" [(ngModel)]="newMovie.series_num"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select required placeholder="Owner" [(ngModel)]="newMovie.owner">
+      <mat-option value="Matt">Matt</mat-option>
+      <mat-option value="Macie">Macie</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<button (click)="addMovie()" mat-raised-button color="warn" class="add"><i class="material-icons">add</i></button>
+<button (click)="goBack()" mat-raised-button>Return to list</button>

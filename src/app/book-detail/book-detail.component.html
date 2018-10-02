@@ -1,7 +1,14 @@
 <div *ngIf="book">
+  <button (click)="goBack()" mat-raised-button><i class="material-icons">chevron_left</i> Back</button>
   <h2>{{ book.title | uppercase }} Details</h2>
-  <img src="{{ coverUrl }}"/>
+  <img *ngIf="coverUrl" class="cover-image" src="{{ coverUrl }}"/>
+  <mat-card *ngIf="!coverUrl && coverLoading" class="image-loading-spinner" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+  </mat-card>
   <div>
+    <mat-card *ngIf="bookLoading" class="image-loading-spinner" style="display: flex; justify-content: center; align-items: center">
+      <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </mat-card>
     <mat-form-field>
       <input matInput placeholder="Title" value="{{ book.title }}" [(ngModel)]="book.title"/>
     </mat-form-field>
@@ -39,6 +46,6 @@
     </mat-form-field>
   </div>
   <button (click)="goBack()" mat-raised-button><i class="material-icons">chevron_left</i> Back</button>
-  <button (click)="saveChanges(book.id)" mat-raised-button color="primary">Save Changes <i class="material-icons">check_circle</i></button>
-  <button (click)="removeBook(book.id)" mat-raised-button color="warn">Remove <i class="material-icons">cancel</i></button>
+  <button (click)="saveChanges(book.id)" mat-raised-button color="primary" [disabled]="saveBtnText != 'Save Changes'">{{ saveBtnText }} <i *ngIf="saveBtnText == 'Save Changes'" class="material-icons">check_circle</i></button>
+  <button (click)="removeBook(book.id)" mat-raised-button color="warn" [disabled]="deleteBtnText != 'Delete Book'">{{ deleteBtnText }} <i class="material-icons">cancel</i></button>
 </div>

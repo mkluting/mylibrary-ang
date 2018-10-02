@@ -1,3 +1,10 @@
 .mat-form-field {
   width: 100%;
 }
+.image-loading-spinner {
+  width: 128px;
+  height: 197px;
+}
+.cover-image {
+  padding: 0 20px 20px 20px;
+}

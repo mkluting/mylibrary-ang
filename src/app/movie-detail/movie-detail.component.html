@@ -1,0 +1,41 @@
+<div *ngIf="movie">
+  <button (click)="goBack()" mat-raised-button><i class="material-icons">chevron_left</i> Back</button>
+  <h2>{{ movie.title | uppercase }} Details</h2>
+  <img *ngIf="coverUrl" class="cover-image" src="{{ coverUrl }}"/>
+  <mat-card *ngIf="!coverUrl && coverLoading" class="image-loading-spinner" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+  </mat-card>
+  <div>
+    <mat-card *ngIf="movieLoading" class="image-loading-spinner" style="display: flex; justify-content: center; align-items: center">
+      <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+    </mat-card>
+    <mat-form-field>
+      <input matInput placeholder="Title" value="{{ movie.title }}" [(ngModel)]="movie.title"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Director" value="{{ movie.director }}" [(ngModel)]="movie.director"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Type" value="{{ movie.type }}" [(ngModel)]="movie.type">
+        <mat-option value="DVD">DVD</mat-option>
+        <mat-option value="Blu-Ray">Blu-Ray</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Series" value="{{ movie.series }}" [(ngModel)]="movie.series"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Series Order Number" value="{{ movie.series_num }}" [(ngModel)]="movie.series_num"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Owner" value="{{ movie.owner }}" [(ngModel)]="movie.owner">
+        <mat-option value="Matt">Matt</mat-option>
+        <mat-option value="Macie">Macie</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <button (click)="goBack()" mat-raised-button><i class="material-icons">chevron_left</i> Back</button>
+  <button (click)="saveChanges(movie.id)" mat-raised-button color="primary" [disabled]="saveBtnText != 'Save Changes'">{{ saveBtnText }} <i *ngIf="saveBtnText == 'Save Changes'" class="material-icons">check_circle</i></button>
+  <button (click)="removeMovie(movie.id)" mat-raised-button color="warn" [disabled]="deleteBtnText != 'Delete Movie'">{{ deleteBtnText }} <i class="material-icons">cancel</i></button>
+</div>

@@ -1,0 +1,14 @@
+a {
+    text-decoration: none;
+}
+h2 {
+    display: inline-block;
+}
+button.add {
+    float: right;
+}
+.filter-input-box {
+    display: block;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+}

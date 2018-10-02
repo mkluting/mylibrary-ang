@@ -13,6 +13,7 @@ import { MatButtonModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
   MatSortModule,
+  MatTabsModule,
   MatSelectModule } from '@angular/material';
 
 
@@ -22,12 +23,16 @@ import { BookDetailComponent } from './book-detail/book-detail.component';
 import { BookService } from './book.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
-import { PagerService } from "./pager.service";
-import { CoverService } from "./cover.service";
+import { PagerService } from './pager.service';
+import { CoverService } from './cover.service';
+import { MovieService } from './movie.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BookCreateComponent } from './book-create/book-create.component';
 import { NavComponent } from './nav/nav.component';
+import { MoviesComponent } from './movies/movies.component';
+import { MovieCreateComponent } from './movie-create/movie-create.component';
+import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 
 
 
@@ -39,6 +44,9 @@ import { NavComponent } from './nav/nav.component';
     MessagesComponent,
     BookCreateComponent,
     NavComponent,
+    MoviesComponent,
+    MovieCreateComponent,
+    MovieDetailComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +63,7 @@ import { NavComponent } from './nav/nav.component';
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
+    MatTabsModule,
     MatButtonModule
   ],
   exports: [
@@ -67,9 +76,10 @@ import { NavComponent } from './nav/nav.component';
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
+    MatTabsModule,
     MatButtonModule
   ],
-  providers: [ BookService, MessageService, CoverService, PagerService ],
+  providers: [ BookService, MovieService, MessageService, CoverService, PagerService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
