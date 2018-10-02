@@ -1,0 +1,55 @@
+<h2>My Books</h2><button mat-raised-button color="warn" class="add" [routerLink]="['/book-create']"><i class="material-icons">add</i></button>
+<div class="mat-elevation-z8">
+  <div class="header">
+  </div>
+
+  <mat-form-field class="filter-input-box">
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+  <mat-table #table [dataSource]="dataSource" matSort (matSortChange)="sortData($event)">
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
+      <mat-cell *matCellDef="let book">
+        <a routerLink="/book-detail/{{book.id}}">{{ book.title }}</a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="author">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Author </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.author_last}}, {{ book.author_first }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="type">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.binding_type }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="series">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Series </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.series}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="book_num">
+      <mat-header-cell *matHeaderCellDef> Book # </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.series_num}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="notes">
+      <mat-header-cell *matHeaderCellDef> Notes </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.notes}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="owner">
+      <mat-header-cell *matHeaderCellDef> Owner </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.owner }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="isbn_13">
+      <mat-header-cell *matHeaderCellDef> ISBN </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.isbn_13 }}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnsToDisplay" (click)="editBook(row)"></mat-row>
+  </mat-table>
+  <mat-paginator *ngIf="!isLoading" [pageSizeOptions]="[5,10,20,50,100,250,500]" [pageIndex]="currentPage-1" [pageSize]="pageSize" [length]="books.length" (page)="pageEvent = handlePageEvent($event);"></mat-paginator>
+  <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner color="primary" mode="indeterminate"></mat-progress-spinner>
+  </mat-card>
+</div>
+

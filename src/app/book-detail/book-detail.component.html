@@ -1,0 +1,44 @@
+<div *ngIf="book">
+  <h2>{{ book.title | uppercase }} Details</h2>
+  <img src="{{ coverUrl }}"/>
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Title" value="{{ book.title }}" [(ngModel)]="book.title"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Author First" value="{{ book.author_first }}" [(ngModel)]="book.author_first"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Author Last" value="{{ book.author_last }}" [(ngModel)]="book.author_last"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Type" value="{{ book.binding_type }}" [(ngModel)]="book.binding_type">
+          <mat-option value="Paperback">Paperback</mat-option>
+          <mat-option value="Mass Market Paperback">Mass Market Paperback</mat-option>
+          <mat-option value="Hardcover">Hardcover</mat-option>
+          <mat-option value="Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Series" value="{{ book.series }}" [(ngModel)]="book.series"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Series Order Number" value="{{ book.series_num }}" [(ngModel)]="book.series_num"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Owner" value="{{ book.owner }}" [(ngModel)]="book.owner">
+        <mat-option value="Matt">Matt</mat-option>
+        <mat-option value="Macie">Macie</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="ISBN (13)" value="{{ book.isbn_13 }}" [(ngModel)]="book.isbn_13"/>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="ISBN (10)" value="{{ book.isbn_10 }}" [(ngModel)]="book.isbn_10"/>
+    </mat-form-field>
+  </div>
+  <button (click)="goBack()" mat-raised-button><i class="material-icons">chevron_left</i> Back</button>
+  <button (click)="saveChanges(book.id)" mat-raised-button color="primary">Save Changes <i class="material-icons">check_circle</i></button>
+  <button (click)="removeBook(book.id)" mat-raised-button color="warn">Remove <i class="material-icons">cancel</i></button>
+</div>

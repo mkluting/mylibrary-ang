@@ -1,0 +1,42 @@
+<div>
+  <mat-form-field>
+    <input required matInput class="form-control" [formControl]="title" placeholder="Title" [(ngModel)]="newBook.title" />
+    <!--<mat-error *ngIf="titleFormControl.hasError('required')">-->
+      <!--Please enter a valid email address-->
+    <!--</mat-error>-->
+  </mat-form-field>
+  <mat-form-field class="form-group">
+    <input required matInput class="form-control" placeholder="Author First" [(ngModel)]="newBook.author_first"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input required matInput placeholder="Author Last" [(ngModel)]="newBook.author_last"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select required placeholder="Type" [(ngModel)]="newBook.binding_type">
+      <mat-option value="Paperback">Paperback</mat-option>
+      <mat-option value="Mass Market Paperback">Mass Market Paperback</mat-option>
+      <mat-option value="Hardcover">Hardcover</mat-option>
+      <mat-option value="Other">Other</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Series" [(ngModel)]="newBook.series"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Series Order Number" [(ngModel)]="newBook.series_num"/>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select required placeholder="Owner" [(ngModel)]="newBook.owner">
+      <mat-option value="Matt">Matt</mat-option>
+      <mat-option value="Macie">Macie</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="ISBN (13)" [(ngModel)]="newBook.isbn_13"/>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="ISBN (10)" [(ngModel)]="newBook.isbn_10"/>
+  </mat-form-field>
+</div>
+<button (click)="addBook()" mat-raised-button color="warn" class="add"><i class="material-icons">add</i></button>
+<button (click)="goBack()" mat-raised-button>Return to list</button>
