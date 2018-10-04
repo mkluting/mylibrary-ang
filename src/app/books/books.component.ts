@@ -16,7 +16,7 @@ export class BooksComponent implements OnInit {
 
   books: Book[];
   newBook: Book;
-  columnsToDisplay = ['title', 'author', 'type', 'series', 'book_num', 'owner', 'isbn_13'];
+  columnsToDisplay = ['title', 'author', 'format', 'series', 'book_num', 'owner', 'isbn_13'];
   isLoading = true;
   pager: any;
   pagedItems: any[];
@@ -66,7 +66,7 @@ export class BooksComponent implements OnInit {
           switch (sort.active) {
             case 'title' : return this.compare(a.title, b.title, isAsc);
             case 'author' : return this.compare(a.author_last + ' ' + a.author_first + ' '+ a.series_num, b.author_last + ' ' + b.author_first + ' ' + b.series_num, isAsc);
-            case 'type' : return this.compare(a.binding_type + ' ' + a.author_last + ' ' + a.author_first+ ' '+a.series_num, b.binding_type + ' '+ b.author_last + ' ' + b.author_first+ ' ' + b.series_num, isAsc);
+            case 'format' : return this.compare(a.format + ' ' + a.author_last + ' ' + a.author_first+ ' '+a.series_num, b.format + ' '+ b.author_last + ' ' + b.author_first+ ' ' + b.series_num, isAsc);
             case 'series' : return this.compare(a.series + ' ' + a.author_last + ' ' + a.author_first + ' ' + a.series_num, b.series + ' ' + b.author_last + ' ' + b.author_first + ' ' + b.series_num, isAsc);
             default: return 0;
           }

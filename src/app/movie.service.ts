@@ -46,7 +46,7 @@ export class MovieService {
     const data = {
       'title': movie.title,
       'director': movie.director,
-      'type': movie.type,
+      'format': movie.format,
       'series': movie.series,
       'series_num': movie.series_num,
       'owner': movie.owner

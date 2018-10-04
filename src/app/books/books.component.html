@@ -18,9 +18,9 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header> Author </mat-header-cell>
       <mat-cell *matCellDef="let book">{{ book.author_last}}, {{ book.author_first }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="type">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Type </mat-header-cell>
-      <mat-cell *matCellDef="let book">{{ book.binding_type }}</mat-cell>
+    <ng-container matColumnDef="format">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Format </mat-header-cell>
+      <mat-cell *matCellDef="let book">{{ book.format }}</mat-cell>
     </ng-container>
     <ng-container matColumnDef="series">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Series </mat-header-cell>
@@ -44,7 +44,7 @@
     </ng-container>
 
 
-    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnsToDisplay" (click)="editBook(row)"></mat-row>
   </mat-table>
   <mat-paginator *ngIf="!isLoading" [pageSizeOptions]="[5,10,20,50,100,250,500]" [pageIndex]="currentPage-1" [pageSize]="pageSize" [length]="books.length" (page)="pageEvent = handlePageEvent($event);"></mat-paginator>

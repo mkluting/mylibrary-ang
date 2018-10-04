@@ -3,7 +3,7 @@ export class Book {
   title: string;
   author_first: string;
   author_last: string;
-  binding_type: string;
+  format: string;
   series: string;
   series_num: number;
   notes: string;

@@ -3,7 +3,7 @@ export class Movie {
   title: string;
   director: string;
   release_date: string;
-  type: string;
+  format: string;
   series: string;
   series_num: number;
   notes: string;

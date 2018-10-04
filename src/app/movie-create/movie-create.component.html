@@ -6,9 +6,11 @@
     <input required matInput placeholder="Director" [(ngModel)]="newMovie.director"/>
   </mat-form-field>
   <mat-form-field>
-    <mat-select required placeholder="Type" [(ngModel)]="newMovie.type">
-      <mat-option value="DVD">DVD</mat-option>
+    <mat-select required placeholder="Movie" [(ngModel)]="newMovie.format">
       <mat-option value="Blu-Ray">Blu-Ray</mat-option>
+      <mat-option value="DVD">DVD</mat-option>
+      <mat-option value="VHS">VHS</mat-option>
+      <mat-option value="Digital">Digital</mat-option>
       <mat-option value="Other">Other</mat-option>
     </mat-select>
   </mat-form-field>

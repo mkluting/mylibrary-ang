@@ -19,10 +19,11 @@
       <input matInput placeholder="Author Last" value="{{ book.author_last }}" [(ngModel)]="book.author_last"/>
     </mat-form-field>
     <mat-form-field>
-      <mat-select placeholder="Type" value="{{ book.binding_type }}" [(ngModel)]="book.binding_type">
+      <mat-select placeholder="Format" value="{{ book.format }}" [(ngModel)]="book.format">
           <mat-option value="Paperback">Paperback</mat-option>
           <mat-option value="Mass Market Paperback">Mass Market Paperback</mat-option>
           <mat-option value="Hardcover">Hardcover</mat-option>
+          <mat-option value="eBook">eBook</mat-option>
           <mat-option value="Other">Other</mat-option>
       </mat-select>
     </mat-form-field>

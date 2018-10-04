@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
 export class NavComponent implements OnInit {
     routeLinks: any[];
     activeLinkIndex = -1;
+    appName = 'MyLib v0.1';
 
   constructor(private router: Router) {
       this.routeLinks = [

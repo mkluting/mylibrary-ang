@@ -12,7 +12,7 @@ import { MessageService } from './message.service';
 @Injectable()
 export class BookService {
 
-  apiRoot:string = 'http://localhost:8000/api/books';
+  apiRoot = 'http://localhost:8000/api/books';
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
@@ -24,23 +24,23 @@ export class BookService {
   // @TODO needs db
   getBook(id: number): Observable<Book> {
         this.messageService.add(`BookService: fetched book id=${id}`);
-        return this.http.get<Book>(this.apiRoot+'/'+id);
+        return this.http.get<Book>(this.apiRoot + '/' + id);
   }
 
   editBook(id: number, book: Book) {
       this.messageService.add(`BookService: editing book id=${id} with data ${JSON.stringify(book)}`);
-        let data = {
+      const data = {
           'title': book.title,
           'author_first': book.author_first,
           'author_last': book.author_last,
-          'binding_type': book.binding_type,
+          'format': book.format,
           'series': book.series,
           'series_num': book.series_num,
           'isbn_13': book.isbn_13,
           'isbn_10': book.isbn_10,
           'owner': book.owner
         };
-        return this.http.put<Response>(this.apiRoot+'/'+id, data);
+        return this.http.put<Response>(this.apiRoot + '/' + id, data);
   }
 
 
@@ -48,11 +48,11 @@ export class BookService {
   addBook(book: Book): Observable<Response> {
     this.messageService.add(`BookService: adding book with data ${JSON.stringify(book)}`);
     // add the book
-    let data = {
+    const data = {
       'title': book.title,
       'author_first': book.author_first,
       'author_last': book.author_last,
-      'binding_type': book.binding_type,
+      'format': book.format,
       'series': book.series,
       'series_num': book.series_num,
       'isbn_13': book.isbn_13,
@@ -66,7 +66,7 @@ export class BookService {
   // @TODO needs DB
   removeBook(id: number): Observable<Response>{
     this.messageService.add(`BookService: removing book id=${id}`);
-    return this.http.delete<Response>(this.apiRoot+'/'+id);
+    return this.http.delete<Response>(this.apiRoot + '/' + id);
   }
 
 }

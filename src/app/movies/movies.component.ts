@@ -16,7 +16,7 @@ export class MoviesComponent implements OnInit {
 
     movies: Movie[];
     newMovie: Movie;
-    columnsToDisplay = ['title', 'director', 'series', 'movie_num', 'owner', 'type' ];
+    columnsToDisplay = ['title', 'director', 'series', 'movie_num', 'owner', 'format' ];
     isLoading = true;
     pager: any;
     pagedItems: any[];
